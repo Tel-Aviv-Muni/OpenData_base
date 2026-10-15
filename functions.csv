@@ -1,0 +1,141 @@
+﻿function_name,תיאור בעברית,קלט,שימוש מתאים,expected_result (WSDL),observed_result,flow name/num,לבדיקה,הערות - תיעוד פנימי
+GetLayer,"מחזירה נתונים משכבה אחת לפי קוד שכבה, עם אפשרות לסינון SQL ולצמצום לפי תחום גאוגרפי.","layerCode: קוד השכבה לשליפה.
+layerWhere: תנאי סינון לשכבה.
+extent: תחום גאוגרפי לשליפה.
+projection: מערכת הקואורדינטות / ההיטל המבוקש.",שליפת ישויות משכבה לפי תחום חיפוש.,לא מוגדר.,"ב-Flow 05, שכבה 768 עם extent סביב אחד העם 9 ו-projection ריק החזירה Esri JSON עם spatialReference=2039 ו-9 ישויות. GetLayerCount באותה שאילתה החזיר 9.",Flow 05 — Layer Truth
+GetLayer2,גרסה של GetLayer עם אותם פרמטרים; ההבדל המעשי אינו מתועד במלואו.,"layerCode: קוד השכבה לשליפה.
+layerWhere: תנאי סינון לשכבה.
+extent: תחום גאוגרפי לשליפה.
+projection: מערכת הקואורדינטות / ההיטל המבוקש.",כמו GetLayer — מבנה הפלט הוא Esri JSON בתוך תשובת SOAP.,string בשם GetLayer2Result.,"ב-Flow 05, באותם פרמטרים של GetLayer, הוחזר SOAP string שנפרס ל-Esri JSON באותה צורת-על. בבדיקה הראשונית נצפתה גם עבודה ללא extent; שקילות מלאה בין התוצאות טרם אומתה.",Flow 05 — Layer Truth
+GetLayers,מחזירה כמה שכבות באותה קריאה לפי רשימת קודים ובאותו תחום גאוגרפי.,"layersCodes: קודי שכבות לשליפה באותה קריאה.
+extent: תחום גאוגרפי משותף לשליפת השכבות.
+projection: מערכת הקואורדינטות / ההיטל המבוקש.",שליפת ישויות ממספר שכבות לפי תחום חיפוש משותף.,לא מוגדר.,"ב-Flow 05, layersCodes=768,495 עם אותו extent ו-projection ריק החזיר raw JSON + SOAP בפורמט array[2].",Flow 05 — Layer Truth,,"4/10/2026 — בדיקת תיאור WSDL מול חתימה וראיות: בתיאור מופיע layerCodes, אך שם הפרמטר בחתימת WSDL הוא layersCodes."
+GetLayerFields,מחזירה את הגדרת השדות של שכבה לפי קוד שכבה.,layerCode: קוד השכבה לשליפה.,"קבלת מידע על שדות השכבה — שמות השדות, שמות בעברית וסוגי שדות. מידע זה יכול לשמש לבניית שאילתות, להבנת התוצאות ולאיתור שדות רלוונטיים לשאלה.",לא מוגדר.,"ב-Flow 05, layerCode=768 החזיר raw JSON + SOAP בפורמט array[52] של הגדרות שדות.",Flow 05 — Layer Truth
+GetLayerFields2,גרסה של GetLayerFields המחזירה את הגדרת השדות של שכבה; ההבדל המעשי דורש אימות.,layerCode: קוד השכבה לשליפה.,כמו GetLayerFields — הפלט מוחזר כמחרוזת בתשובת SOAP.,string בשם GetLayerFields2Result.,"ב-Flow 05, layerCode=768 החזיר SOAP XML עם string שאינו ריק. שקילות סמנטית מלאה מול GetLayerFields טרם אומתה.",Flow 05 — Layer Truth,"4/10/2026 results issues: בבדיקה מול השירות הציבורי עם layerCode=768 התקבל HTTP 200, אך תשובת SOAP הכילה שגיאת המרה מ-JArray ל-string. GetLayerFields עם אותו קלט החזירה מידע תקין על השדות."
+GetLayersCodes,מחזירה את רשימת קודי השכבות הזמינות בשירות.,אין פרמטרי קלט.,קבלת מידע על השכבות הזמינות בשירות - קודים ושמות,לא מוגדר.,ב-Flow 00 הפלט נפרס כ-legacy JSON-ish + SOAP. ב-AGS01 הוחזרו 577 שכבות וב-AGS02 הוחזרו 554; ההבדל במספר השכבות בין הסביבות צפוי.,Flow 00 — Service Discovery
+GetLayersCodes2,גרסה של GetLayersCodes המחזירה את רשימת קודי השכבות; ההבדל המעשי דורש אימות.,אין פרמטרי קלט.,כמו GetLayersCodes — הפלט מוחזר כמחרוזת בתשובת SOAP.,string בשם GetLayersCodes2Result.,ב-Flow 00 הוחזר SOAP XML עם string שאינו ריק. שקילות מלאה מול GetLayersCodes טרם הושוותה.,Flow 00 — Service Discovery
+GetStreets,מחזירה את רשימת הרחובות.,אין פרמטרי קלט.,קבלת מידע על רחובות - קודים ושמות ,לא מוגדר.,"ב-Flow 00, בשני השרתים הוחזר raw JSON + SOAP עם object של 2504 קודי רחוב.",Flow 00 — Service Discovery
+GetStreets2,גרסה של GetStreets המחזירה את רשימת הרחובות; ההבדל המעשי דורש אימות.,אין פרמטרי קלט.,כמו GetStreets — הפלט מוחזר כמחרוזת JSON בתוך תשובת SOAP.,string בשם GetStreets2Result.,"ב-Flow 00, בשני השרתים הוחזר SOAP-wrapped JSON עם object של 2504 קודי רחוב.",Flow 00 — Service Discovery
+GetStreetsEng,מחזירה את רשימת הרחובות באנגלית.,אין פרמטרי קלט.,קבלת מידע על רחובות — קודים ושמות באנגלית.,לא מוגדר.,"ב-Flow 00, בשני השרתים הוחזר raw JSON + SOAP עם object של 2504 רשומות רחוב באנגלית.",Flow 00 — Service Discovery
+GetStreetsEng2,גרסה של GetStreetsEng המחזירה את רשימת הרחובות באנגלית; ההבדל המעשי דורש אימות.,אין פרמטרי קלט.,כמו GetStreetsEng — הפלט מוחזר כמחרוזת JSON בתוך תשובת SOAP.,string בשם GetStreetsEng2Result.,"ב-Flow 00, בשני השרתים הוחזר SOAP-wrapped JSON עם object של 2504 רשומות רחוב באנגלית.",Flow 00 — Service Discovery
+GetGeoFromItm,ממירה קואורדינטות ITM לקואורדינטות גאוגרפיות.,coords: קואורדינטות הנקודה ב-itm.,המרת סט קואורדינטות מ-itm ל-wgs84 [2039=>4326].,לא מוגדר.,טרם נבדק ידנית.,Flow 01 — Address / Coordinate Truth
+GetItmFromGeo,ממירה קואורדינטות גאוגרפיות לקואורדינטות ITM.,coords: קואורדינטות הנקודה ב-wgs84.,המרת סט קואורדינטות מ-wgs84 ל-itm [4326=>2039].,לא מוגדר.,טרם נבדק ידנית.,Flow 01 — Address / Coordinate Truth
+GetItmFromWebMercator,ממירה קואורדינטות Web Mercator לקואורדינטות ITM.,coords: קואורדינטות הנקודה ב-wm.,המרת סט קואורדינטות מ-wm ל-itm [3857=>2039].,לא מוגדר.,טרם נבדק ידנית.,Flow 01 — Address / Coordinate Truth
+GetAddressesFromItm,מחזירה כתובות בסביבת נקודת ITM וברדיוס נתון.,"coords: קואורדינטות הנקודה ב-itm.
+radius: רדיוס החיפוש סביב נקודת הקלט.",מציאת כתובות לפי רדיוס מנקודה בקואורדינטות itm.,לא מוגדר.,טרם נבדק ידנית.,Flow 01 — Address / Coordinate Truth
+GetAddressesFromGeo,מחזירה כתובות בסביבת נקודה בקואורדינטות גאוגרפיות וברדיוס נתון.,"coords: קואורדינטות הנקודה ב-wgs84.
+radius: רדיוס החיפוש סביב נקודת הקלט.",מציאת כתובות לפי רדיוס מנקודה בקואורדינטות wgs84.,לא מוגדר.,טרם נבדק ידנית.,Flow 01 — Address / Coordinate Truth
+GetAddressClosestToItm,"מחזירה את הכתובת הקרובה לנקודת ITM, עם אפשרות להגביל לחיפוש רחוב קרוב.","coords: קואורדינטות הנקודה ב-itm.
+radius: רדיוס החיפוש סביב נקודת הקלט.
+closestStreetOnly: דגל להגבלת החיפוש לרחוב הקרוב בלבד.",מציאת הכתובת הקרובה ביותר לנקודה בקואורדינטות itm לפי רדיוס; אפשר להגביל את החיפוש לרחוב הקרוב בלבד.,לא מוגדר.,טרם נבדק ידנית.,Flow 01 — Address / Coordinate Truth
+GetAddressClosestToItm2,גרסה של GetAddressClosestToItm לאיתור הכתובת הקרובה לנקודת ITM; ההבדל המעשי דורש אימות.,"coords: קואורדינטות הנקודה ב-itm.
+radius: רדיוס החיפוש סביב נקודת הקלט.
+closestStreetOnly: דגל להגבלת החיפוש לרחוב הקרוב בלבד.",כמו GetAddressClosestToItm — הפלט מוחזר כמחרוזת בתשובת SOAP.,string בשם GetAddressClosestToItm2Result.,טרם נבדק ידנית.,Flow 01 — Address / Coordinate Truth
+GetAddressClosestToGeo,"מחזירה את הכתובת הקרובה לנקודה בקואורדינטות גאוגרפיות, עם אפשרות להגביל לחיפוש רחוב קרוב.","coords: קואורדינטות הנקודה ב-wgs84.
+radius: רדיוס החיפוש סביב נקודת הקלט.
+closestStreetOnly: דגל להגבלת החיפוש לרחוב הקרוב בלבד.",מציאת הכתובת הקרובה ביותר לנקודה בקואורדינטות wgs84 לפי רדיוס; אפשר להגביל את החיפוש לרחוב הקרוב בלבד.,לא מוגדר.,טרם נבדק ידנית.,Flow 01 — Address / Coordinate Truth
+GetAddressClosestToGeo2,גרסה של GetAddressClosestToGeo לאיתור הכתובת הקרובה לנקודה גאוגרפית; ההבדל המעשי דורש אימות.,"coords: קואורדינטות הנקודה ב-wgs84.
+radius: רדיוס החיפוש סביב נקודת הקלט.
+closestStreetOnly: דגל להגבלת החיפוש לרחוב הקרוב בלבד.",כמו GetAddressClosestToGeo — הפלט מוחזר כמחרוזת בתשובת SOAP.,string בשם GetAddressClosestToGeo2Result.,טרם נבדק ידנית.,Flow 01 — Address / Coordinate Truth
+IsPointInTelAvivItm,בודקת אם נקודת ITM נמצאת בתחום תל אביב-יפו.,coords: קואורדינטות הנקודה.,בדיקה אם נקודה בקואורדינטות itm נמצאת בתחום העיר.,לא מוגדר.,טרם נבדק ידנית.,"Flow 01 — Address / Coordinate Truth
+Flow 02 — Municipal Service Equivalence"
+IsPointInTelAvivGeo,בודקת אם נקודה בקואורדינטות גאוגרפיות נמצאת בתחום תל אביב-יפו.,coords: קואורדינטות הנקודה.,בדיקה אם נקודה בקואורדינטות wgs84 נמצאת בתחום העיר.,לא מוגדר.,טרם נבדק ידנית.,Flow 02 — Municipal Service Equivalence
+GetCoordinatesFromAddress,"מחזירה קואורדינטות עבור כתובת לפי קוד רחוב, מספר בית וכניסה.","streetCode: קוד הרחוב בכתובת המבוקשת.
+houseNum: מספר הבית בכתובת המבוקשת.
+entrance: כניסה בכתובת המבוקשת.",קבלת קואורדינטות ב-itm וב-wgs84 של כתובת.,לא מוגדר.,טרם נבדק ידנית.,Flow 01 — Address / Coordinate Truth,,4/10/2026 — בדיקת תיאור WSDL מול חתימה וראיות: התיאור מגדיר streetCode כקוד בן ארבע ספרות; בבדיקות מוצלחות נשלחו 187 ו-496 ללא ריפוד. אין להציג ארבע ספרות כחובת קלט מוכחת.
+GetCoordinatesFromAddress2,גרסה של GetCoordinatesFromAddress המחזירה קואורדינטות עבור כתובת; ההבדל המעשי דורש אימות.,"streetCode: קוד הרחוב בכתובת המבוקשת.
+houseNum: מספר הבית בכתובת המבוקשת.
+entrance: כניסה בכתובת המבוקשת.",כמו GetCoordinatesFromAddress — הפלט מוחזר כאובייקט MyPoint בתשובת SOAP.,MyPoint בשם GetCoordinatesFromAddress2Result.,טרם נבדק ידנית.,"Flow 01 — Address / Coordinate Truth
+Flow 02 — Municipal Service Equivalence",,4/10/2026 — בדיקת תיאור WSDL מול חתימה וראיות: התיאור מגדיר streetCode כקוד בן ארבע ספרות; בבדיקות מוצלחות נשלחו 187 ו-496 ללא ריפוד. אין להציג ארבע ספרות כחובת קלט מוכחת.
+GetLayersFromAddress,"מחזירה נתונים משכבות נבחרות סביב כתובת, לפי רדיוסים לכל שכבה.","layerCodes: קודי השכבות לחיפוש.
+radiuses: רדיוס החיפוש לכל שכבה, בהתאמה לסדר קודי השכבות.
+streetCode: קוד הרחוב בכתובת המבוקשת.
+houseNum: מספר הבית בכתובת המבוקשת.
+entrance: כניסה בכתובת המבוקשת.","שליפת ישויות ממספר שכבות לפי רדיוס מכתובת, עם אפשרות לרדיוס שונה לכל שכבה.",לא מוגדר.,"ב-Flow 03, עבור דיזנגוף 50 ו-layerCodes=768,551 ברדיוס 500,500 הוחזר array[2]. מתוך התוצאה התגלו k_mosad=24711 ו-ms_shefa=1862 לצורך בדיקות המרחק.",Flow 01 — Address / Coordinate Truth; Flow 03 — Special Code Discovery,,4/10/2026 — בדיקת תיאור WSDL מול חתימה וראיות: התיאור מגדיר streetCode כקוד בן ארבע ספרות; בבדיקה מוצלחת נשלח 187 ללא ריפוד. אין להציג ארבע ספרות כחובת קלט מוכחת.
+GetLayersFromAddress2,גרסה של GetLayersFromAddress לשליפת שכבות סביב כתובת; ההבדל המעשי דורש אימות.,"layerCodes: קודי השכבות לחיפוש.
+radiuses: רדיוס החיפוש לכל שכבה, בהתאמה לסדר קודי השכבות.
+streetCode: קוד הרחוב בכתובת המבוקשת.
+houseNum: מספר הבית בכתובת המבוקשת.
+entrance: כניסה בכתובת המבוקשת.",כמו GetLayersFromAddress — הפלט מוחזר כמחרוזת JSON בתוך תשובת SOAP.,string בשם GetLayersFromAddress2Result.,"ב-Flow 05, עבור אחד העם 9, layerCodes=768,495 ו-radiuses=500,500 הוחזר SOAP-wrapped JSON בפורמט array[2].",Flow 05 — Layer Truth,,4/10/2026 — בדיקת תיאור WSDL מול חתימה וראיות: התיאור מגדיר streetCode כקוד בן ארבע ספרות; בבדיקה מוצלחת נשלח 11 ללא ריפוד. אין להציג ארבע ספרות כחובת קלט מוכחת.
+GetLayersFromItm,"מחזירה נתונים משכבות נבחרות סביב נקודת ITM, לפי רדיוסים לכל שכבה.","layerCodes: קודי השכבות לחיפוש.
+radiuses: רדיוס החיפוש לכל שכבה, בהתאמה לסדר קודי השכבות.
+coords: קואורדינטות הנקודה.","שליפת ישויות ממספר שכבות לפי רדיוס מנקודה בקואורדינטות itm, עם אפשרות לרדיוס שונה לכל שכבה.",לא מוגדר.,"ב-Flow 05, עבור ITM 178400.57,663473.75, layerCodes=768,495 ו-radiuses=500,500 הוחזר raw JSON + SOAP בפורמט array[2].",Flow 05 — Layer Truth
+GetLayersFromGeo,"מחזירה נתונים משכבות נבחרות סביב נקודה בקואורדינטות גאוגרפיות, לפי רדיוסים לכל שכבה.","layerCodes: קודי השכבות לחיפוש.
+radiuses: רדיוס החיפוש לכל שכבה, בהתאמה לסדר קודי השכבות.
+coords: קואורדינטות הנקודה.","שליפת ישויות ממספר שכבות לפי רדיוס מנקודה בקואורדינטות wgs84, עם אפשרות לרדיוס שונה לכל שכבה.",לא מוגדר.,"ב-Flow 05, עבור WGS84 34.76966,32.063779, layerCodes=768,495 ו-radiuses=500,500 הוחזר raw JSON + SOAP בפורמט array[2]. שקילות מלאה בין Address2/ITM/Geo טרם הושוותה.",Flow 05 — Layer Truth
+GetMapZoom2Address,"מחזירה מידע לצורך תצוגת מפה סביב כתובת, לפי שכבות, גודל תמונה ורדיוס.","layersCodes
+streetCode
+houseNum
+entrance
+pictureWidth
+pictureHeight
+radius",,לא מוגדר.,טרם נבדק ידנית.
+GetMapZoom2Address2,גרסה של GetMapZoom2Address לצורך תצוגת מפה סביב כתובת; ההבדל המעשי דורש אימות.,"layersCodes
+streetCode
+houseNum
+entrance
+pictureWidth
+pictureHeight
+radius",,string בשם GetMapZoom2Address2Result.,טרם נבדק ידנית.
+GetMapZoom2Envelope,מחזירה מידע לצורך תצוגת מפה עבור תחום גאוגרפי נתון ובגודל תמונה מבוקש.,"layersCodes
+extent
+pictureWidth
+pictureHeight",,לא מוגדר.,טרם נבדק ידנית.
+GetSelaCars,מחזירה נתוני SelaCars; המשמעות המדויקת של המקור/הישות דורשת אימות.,אין פרמטרי קלט.,,לא מוגדר.,ב-AGS01 וב-AGS02 הוחזר HTTP 200 שמכיל application error: Invalid column name 'Make' וכן binding error ב-dbo.kl_v_sela_cars_ituran. הפעולה שבורה כרגע בצד ה-backend; הטסטר מזהה זאת כ-known_backend_error.,Flow 00 — Service Discovery
+GetTeutCars,מחזירה נתוני TeutCars; המשמעות המדויקת של המקור/הישות דורשת אימות.,אין פרמטרי קלט.,,לא מוגדר.,ב-AGS01 וב-AGS02 הוחזר HTTP 200 שמכיל application error: Invalid column name 'Make' וכן binding error ב-dbo.kl_v_teut_cars_ituran. הפעולה שבורה כרגע בצד ה-backend; הטסטר מזהה זאת כ-known_backend_error.,Flow 00 — Service Discovery
+GetMekomot,מחזירה נתוני Mekomot; המשמעות המדויקת של הישות דורשת אימות.,אין פרמטרי קלט.,קבלת מידע על מקומות ונקודות עניין — שמות וקואורדינטות ב-itm.,לא מוגדר.,"ב-Flow 00, בשני השרתים הוחזר raw JSON + SOAP כ-Esri JSON object עם המפתחות displayFieldName, fieldAliases, geometryType, spatialReference, fields, features.",Flow 00 — Service Discovery,,"4/10/2026: אי-התאמה בתיעוד השירות — בתיאור GetMekomot מופיעים פרמטרים של שכבות, כתובת, גודל תמונה ורדיוס, אף שהפעולה אינה מקבלת פרמטרי קלט. נראה שהתיאור הועתק מפעולת תצוגת מפה. בקריאה לשירות הציבורי ללא קלט התקבלו 401 נקודות ב-itm [2039], עם שדה shem (שם)."
+GetLayerCount,"מחזירה ספירת ישויות בשכבה לפי קוד שכבה, סינון ותחום גאוגרפי.","layerCode: קוד השכבה לשליפה.
+layerWhere: תנאי סינון לשכבה.
+extent: תחום גאוגרפי לשליפה.
+projection: מערכת הקואורדינטות / ההיטל המבוקש.",ספירת ישויות משכבה לפי תחום חיפוש.,string בשם GetLayerCountResult.,"ב-Flow 05, עבור layerCode=768 ובאותו extent של GetLayer, הוחזר string בערך 9; הוא תואם ל-9 הישויות שהוחזרו מ-GetLayer.",Flow 05 — Layer Truth
+GetLayersCount,"מחזירה ספירה המבוססת על שכבת נקודות ושכבת פוליגונים, עם תנאי סינון לכל שכבה.","pointLayerCode: קוד שכבת הנקודות לספירה.
+pointLayerWhere: תנאי סינון לשכבת הנקודות.
+polygonLayerCode: קוד שכבת הפוליגונים לספירה.
+polygonLayerWhere: תנאי סינון לשכבת הפוליגונים.
+projection: מערכת הקואורדינטות / ההיטל המבוקש.","ספירת נקודות משכבה בתוך פוליגון משכבה אחרת, לפי תנאי סינון לכל שכבה.",string בשם GetLayersCountResult.,"4/10/2026 — שירות ציבורי gisn: pointLayerCode=527, polygonLayerCode=771, polygonLayerWhere=oid_ezor = 11, projection=itm. pointLayerWhere=id_ktovet = 118130 החזיר 1 (גם בהרצה חוזרת); k_rechov = 187 החזיר 153; k_rechov = 11 החזיר 1. הפלט מחרוזת מספרית בתוך SOAP, HTTP 200. אלה ספירות שירות; לא בוצעה הצלבה עצמאית לכל הנקודות.",,"4/10/2026 results issues: עם כתובת 118130 ו-projection=itm, שכבה 771 עם polygonLayerWhere=1=1 החזירה 0, לעומת 1 עם oid_ezor = 11. מול 495 ו-491 עם 1=1 התקבלה שגיאת runtime binding on a null reference בתוך HTTP 200. אין להסיק מכך שהשכבות אינן קיימות; סיבת ההבדלים טרם נבדקה.","4/10/2026 — בדיקת תיאור WSDL מול חתימה וראיות: תיאור הארגומנטים אינו תואם לחתימה: מתועדים layerCode, layerCodePolygon, layerWherePolygon; בפועל pointLayerCode, pointLayerWhere, polygonLayerCode, polygonLayerWhere. תיאור מסנן שכבת הנקודות חסר. projection מתועד כ-itm/wm/wgs84; בדוגמת cURL שסיפק service maintainer נכתב 2039, ויש לנסות itm לפני הסקת מסקנה על הכשל.
+בדיקת בקרה עם אותו זוג שכבות ואותם מסננים: projection=itm החזיר 1; projection=2039 החזיר error, invalid projection. כך אומתה דחיית 2039 בניסוי זה."
+GetGarbageDaysFromItm,מחזירה את ימי פינוי האשפה עבור נקודת ITM.,coords: קואורדינטות הנקודה.,קבלת ימי פינוי אשפה לפי נקודה בקואורדינטות itm.,string בשם GetGarbageDaysFromItmResult.,טרם נבדק ידנית.,Flow 02 — Municipal Service Equivalence
+GetGarbageDaysFromGeo,מחזירה את ימי פינוי האשפה עבור נקודה בקואורדינטות גאוגרפיות.,coords: קואורדינטות הנקודה.,קבלת ימי פינוי אשפה לפי נקודה בקואורדינטות wgs84.,string בשם GetGarbageDaysFromGeoResult.,טרם נבדק ידנית.,Flow 02 — Municipal Service Equivalence
+GetGarbageDaysFromAddress,מחזירה את ימי פינוי האשפה עבור כתובת.,"streetCode: קוד הרחוב בכתובת המבוקשת.
+houseNum: מספר הבית בכתובת המבוקשת.
+entrance: כניסה בכתובת המבוקשת.",קבלת ימי פינוי אשפה לפי כתובת.,string בשם GetGarbageDaysFromAddressResult.,טרם נבדק ידנית.,Flow 02 — Municipal Service Equivalence,,"4/10/2026 — בדיקת תיאור WSDL מול חתימה וראיות: בתיאור מופיעים street ו-house, אך שמות הפרמטרים בחתימת WSDL הם streetCode ו-houseNum."
+GetCleaningDaysFromItm,מחזירה את ימי הניקיון עבור נקודת ITM.,coords: קואורדינטות הנקודה.,קבלת ימי ניקיון לפי נקודה בקואורדינטות itm.,string בשם GetCleaningDaysFromItmResult.,טרם נבדק ידנית.,Flow 02 — Municipal Service Equivalence
+GetCleaningDaysFromGeo,מחזירה את ימי הניקיון עבור נקודה בקואורדינטות גאוגרפיות.,coords: קואורדינטות הנקודה.,קבלת ימי ניקיון לפי נקודה בקואורדינטות wgs84.,string בשם GetCleaningDaysFromGeoResult.,טרם נבדק ידנית.,Flow 02 — Municipal Service Equivalence
+GetCleaningDaysFromAddress,מחזירה את ימי הניקיון עבור כתובת.,"streetCode: קוד הרחוב בכתובת המבוקשת.
+houseNum: מספר הבית בכתובת המבוקשת.
+entrance: כניסה בכתובת המבוקשת.",קבלת ימי ניקיון לפי כתובת.,string בשם GetCleaningDaysFromAddressResult.,טרם נבדק ידנית.,Flow 02 — Municipal Service Equivalence,,"4/10/2026 — בדיקת תיאור WSDL מול חתימה וראיות: בתיאור מופיעים street ו-house, אך שמות הפרמטרים בחתימת WSDL הם streetCode ו-houseNum."
+GetLayersIntersection,"מחזירה מידע על חיתוך בין שתי שכבות, עם אפשרות לתנאי סינון לכל שכבה.","layerCode1: קוד שכבת המקור לחיתוך.
+layerCode2: קוד שכבת היעד לחיתוך; בבדיקות נדרשה שכבת פוליגונים.
+where1: תנאי סינון לישויות בשכבת המקור.
+where2: תנאי סינון לישויות בשכבת היעד.",שליפת ישויות משכבה יחד עם מידע מהפוליגונים החותכים אותן בשכבה אחרת; השכבה השנייה חייבת להיות שכבת פוליגונים.,string בשם GetLayersIntersectionResult.,"נבדק ב-AGS02 עם שכבת כתובות 742 (id_ktovet=118130, דיזנגוף 50). מול שכבות פוליגון 975, 971, 944, 661, 495, 771, 491 התקבל מערך של רשומה אחת, הכולל את מאפייני הכתובת יחד עם מאפייני הפוליגון החותך. מול 989 ומול שכבת קו 992 התקבלה השגיאה: error, second layer must be polygon layer — כלומר הארגומנט השני נדרש להיות שכבת פוליגון.",Flow 06 – Spatial Relation Truth,,4/10/2026 — בדיקת תיאור WSDL מול חתימה וראיות: בתיאור מופיעים layer1 ו-layer2; בחתימת WSDL השמות הם layerCode1 ו-layerCode2. דרישת שכבת פוליגונים בארגומנט השני מתועדת ותואמת לבדיקות.
+GetGezemDaysFromItm,מחזירה את ימי פינוי הגזם עבור נקודת ITM.,coords: קואורדינטות הנקודה.,קבלת ימי פינוי גזם לפי נקודה בקואורדינטות itm.,string בשם GetGezemDaysFromItmResult.,טרם נבדק ידנית.,Flow 02 — Municipal Service Equivalence
+GetGezemDaysFromGeo,מחזירה את ימי פינוי הגזם עבור נקודה בקואורדינטות גאוגרפיות.,coords: קואורדינטות הנקודה.,קבלת ימי פינוי גזם לפי נקודה בקואורדינטות wgs84.,string בשם GetGezemDaysFromGeoResult.,טרם נבדק ידנית.,Flow 02 — Municipal Service Equivalence
+GetGezemDaysFromAddress,מחזירה את ימי פינוי הגזם עבור כתובת.,"streetCode: קוד הרחוב בכתובת המבוקשת.
+houseNum: מספר הבית בכתובת המבוקשת.
+entrance: כניסה בכתובת המבוקשת.",קבלת ימי פינוי גזם לפי כתובת.,string בשם GetGezemDaysFromAddressResult.,טרם נבדק ידנית.,Flow 02 — Municipal Service Equivalence,,"4/10/2026 — בדיקת תיאור WSDL מול חתימה וראיות: בתיאור מופיעים street ו-house, אך שמות הפרמטרים בחתימת WSDL הם streetCode ו-houseNum."
+GetDistanceFromWgs84AndAddress,מחזירה מרחק בין נקודת WGS84 לבין כתובת.,"coords: קואורדינטות הנקודה.
+streetCode: קוד הרחוב בכתובת המבוקשת.
+houseNum: מספר הבית בכתובת המבוקשת.",קבלת מרחק בין נקודה בקואורדינטות wgs84 לכתובת.,string בשם GetDistanceFromWgs84AndAddressResult.,"ב-Flow 04, כאשר נקודת ה-WGS84 נגזרה מאחד העם 9 והכתובת שנבדקה הייתה אותה כתובת (streetCode=11, houseNum=9), הוחזר string ""00"". יחידת המרחק טרם אומתה.",Flow 04 — Distance Truth
+GetDistanceFromWgs84AndTwoAddresses,"מחזירה מרחק בין נקודת WGS84 לבין שתי כתובות/צדי כתובת, לפי הפרמטרים שהוגדרו בפעולה.","coords: קואורדינטות הנקודה.
+streetCode: קוד הרחוב בכתובת המבוקשת.
+houseNum1: מספר הבית הראשון בטווח הכתובות; סדר הגבולות משפיע על התוצאה.
+houseNum2: מספר הבית השני בטווח הכתובות; סדר הגבולות משפיע על התוצאה.
+checkBothSides: דגל לבדיקת שני צדי הרחוב; השפעתו המדויקת טרם אומתה בבדיקות.","קבלת מרחק בין נקודה בקואורדינטות wgs84 לטווח כתובות ברחוב, לפי שני מספרי בית.",string בשם GetDistanceFromWgs84AndTwoAddressesResult.,"ב-Flow 04 נצפתה תלות בסדר גבולות הכתובות: 9→1 החזיר ""100000"" (גם checkBothSides=true וגם false, וגם מנקודת דיזנגוף 50); 1→9 החזיר ""00"" מנקודת אחד העם 9 ו-""1407"" מנקודת דיזנגוף 50. נראה שהפרמטרים הם גבולות מסודרים; ""100000"" נראה כערך sentinel. יחידת המרחק טרם אומתה.",Flow 04 — Distance Truth
+GetDistanceFromWgs84AndJunction,מחזירה מרחק בין נקודת WGS84 לבין צומת המוגדר באמצעות שני קודי רחוב.,"coords: קואורדינטות הנקודה.
+streetCode1: קוד הרחוב הראשון בצומת.
+streetCode2: קוד הרחוב השני בצומת.","קבלת מרחק בין נקודה בקואורדינטות wgs84 לצומת, לפי שני קודי רחוב.",string בשם GetDistanceFromWgs84AndJunctionResult.,"ב-Flow 04, מנקודת WGS84 של אחד העם 9 לצומת אחד העם × הרצל (streetCode1=11, streetCode2=2) הוחזר string ""21"". יחידת המרחק טרם אומתה.",Flow 04 — Distance Truth
+GetDistanceFromWgs84Andkindergarten,מחזירה מרחק בין נקודת WGS84 לבין גן ילדים לפי קוד גן.,"coords: קואורדינטות הנקודה.
+kinderCode: קוד גן הילדים לחישוב המרחק.","קבלת מרחק בין נקודה בקואורדינטות wgs84 לגן ילדים, לפי קוד גן.",string בשם GetDistanceFromWgs84AndkindergartenResult.,"בבדיקת ADDRESS_A הוחזר SOAP XML עם ערך string מספרי ""225"" עבור kinderCode=24711; הקוד התגלה קודם דרך GetLayersFromAddress. יחידת המרחק טרם אומתה.",Flow 03 — Special Code Discovery
+GetDistanceFromWgs84AndGreenArea,מחזירה מרחק בין נקודת WGS84 לבין שטח ירוק לפי קוד shefa.,"coords: קואורדינטות הנקודה.
+shefaCode: קוד השטח הירוק לחישוב המרחק.","קבלת מרחק בין נקודה בקואורדינטות wgs84 לשטח ירוק, לפי קוד השטח.",string בשם GetDistanceFromWgs84AndGreenAreaResult.,"בבדיקת ADDRESS_A הוחזר SOAP XML עם ערך string מספרי ""122"" עבור shefaCode=1862; הקוד התגלה קודם דרך GetLayersFromAddress. יחידת המרחק טרם אומתה.",Flow 03 — Special Code Discovery
+GetStreetsWithAddressesOnly,מחזירה רשימת רחובות שיש עבורם כתובות.,אין פרמטרי קלט.,קבלת מידע על רחובות שיש להם כתובות — קודים ושמות.,string בשם GetStreetsWithAddressesOnlyResult.,"ב-Flow 00, בשני השרתים הוחזר SOAP-wrapped JSON עם object של 2169 רחובות שיש עבורם כתובות.",Flow 00 — Service Discovery
+GetAddressesFromStreet,מחזירה את הכתובות המשויכות לרחוב לפי קוד רחוב.,streetCode: קוד הרחוב בכתובת המבוקשת.,קבלת כתובות ברחוב לפי קוד רחוב.,string בשם GetAddressesFromStreetResult.,טרם נבדק ידנית.,Flow 01 — Address / Coordinate Truth
+IsPointInsideLayerItm,"בודקת אם נקודת ITM נמצאת בתוך שכבה נתונה, עם אפשרות לסינון ול-buffer.","coords: קואורדינטות הנקודה.
+layerCode: קוד השכבה לשליפה.
+where: תנאי סינון לישויות בשכבה.
+buffer: מרחק החיץ (buffer) המשמש בבדיקת הנקודה מול השכבה.","בדיקה אם נקודה בקואורדינטות itm נמצאת בתוך פוליגונים בשכבה, עם אפשרות לסינון ול-buffer.",string בשם IsPointInsideLayerItmResult.,טרם נבדק ידנית.,"Flow 01 — Address / Coordinate Truth
+Flow 02 — Municipal Service Equivalence",,"4/10/2026 — בדיקת תיאור WSDL מול חתימה וראיות: ה-WSDL מתאר buffer סביב הפוליגון, במטרים; תיאור הקלט בקטלוג אינו מציין זאת במפורש. יש להבחין בין חיץ סביב פוליגון לבין רדיוס חיפוש סביב נקודה."
+IsPointInsideLayerGeo,"בודקת אם נקודה בקואורדינטות גאוגרפיות נמצאת בתוך שכבה נתונה, עם אפשרות לסינון ול-buffer.","coords: קואורדינטות הנקודה.
+layerCode: קוד השכבה לשליפה.
+where: תנאי סינון לישויות בשכבה.
+buffer: מרחק החיץ (buffer) המשמש בבדיקת הנקודה מול השכבה.","בדיקה אם נקודה בקואורדינטות wgs84 נמצאת בתוך פוליגונים בשכבה, עם אפשרות לסינון ול-buffer.",string בשם IsPointInsideLayerGeoResult.,טרם נבדק ידנית.,Flow 02 — Municipal Service Equivalence,,"4/10/2026 — בדיקת תיאור WSDL מול חתימה וראיות: ה-WSDL מתאר buffer סביב הפוליגון, במטרים; תיאור הקלט בקטלוג אינו מציין זאת במפורש. יש להבחין בין חיץ סביב פוליגון לבין רדיוס חיפוש סביב נקודה."

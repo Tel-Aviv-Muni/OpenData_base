@@ -1,0 +1,57 @@
+{
+  "packet_version": "0.5-public",
+  "prepared_date": "2026-10-06",
+  "derived_from": "v0.4 2026-10-04",
+  "resource_snapshot_date": "2026-09-20",
+  "resource_snapshot_surface": "unrecorded; verify public availability",
+  "functions_export_date": "2026-10-04",
+  "wsdl_source": "https://gisn.tel-aviv.gov.il/GisOpenData/service.asmx?WSDL",
+  "execution_policy": "No startup calls; SOAP only after explicit scoped user approval",
+  "files": [
+    {
+      "name": "EXAMPLES_AND_LIMITS.md",
+      "bytes": 4169,
+      "sha256": "817791c96816d41f1cb04d03440bc796ecd8183dd6fa48f34ad08fc322cf57df"
+    },
+    {
+      "name": "README.md",
+      "bytes": 1431,
+      "sha256": "aa340f71797529d92aa8f9b478a08ef70d71727f3fb3acf965003ab6c428cfac"
+    },
+    {
+      "name": "START_HERE.md",
+      "bytes": 7363,
+      "sha256": "5b54f151ce26ad023b8170105a602151b3c18fe6bd4fe83ce7c228b58df35e4b"
+    },
+    {
+      "name": "TEST_PROMPTS.md",
+      "bytes": 2320,
+      "sha256": "debce48c6ccba1120899b5c9d691683a896b49bc17ff76f5fe4cdf835426f3d1"
+    },
+    {
+      "name": "fields.csv",
+      "bytes": 2293136,
+      "sha256": "9ce1ef30bf173547915fd08ab12f930205441c146b0eabb8d31cb06985ac4aeb"
+    },
+    {
+      "name": "function_args.csv",
+      "bytes": 17701,
+      "sha256": "099b6b0cca7772a6137dbf8fe3621e0c3aac6bfb541eaa7ea9cdc51bfbec03ac"
+    },
+    {
+      "name": "functions.csv",
+      "bytes": 33780,
+      "sha256": "223446d3a818739415a004b25c4445973702beb6b28c1457df0c10511107ba1e"
+    },
+    {
+      "name": "layers.csv",
+      "bytes": 923600,
+      "sha256": "6b7bf5556f6e7aa007ee3f60f4e46599c9cf93cd12dc9fbe7620b05dfc94dcfa"
+    },
+    {
+      "name": "service.wsdl",
+      "bytes": 225788,
+      "sha256": "be9780f93bff9c9d4040bfb328bb5e2a86959368bb97287a434d7b6fde1e8e39"
+    }
+  ]
+}
